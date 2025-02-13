@@ -1,39 +1,29 @@
-/* script.js */
-function showAlert() {
-    alert('Hello! This is a JavaScript alert.');
+// Counter App
+
+document.addEventListener("Counter", init);
+
+let count = Number(sessionStorage.getItem("count")) || 0;
+
+function init() {
+    document.getElementById("count").textContent = count;
 }
 
-function changeText() {
-    document.getElementById('text').innerHTML = 'Text changed!';
+function increaseCount() {
+    count++;
+    updateCount();
 }
 
-function handleClick() {
-    document.getElementById('clickMessage').innerHTML = 'Button Clicked!';
+function decreaseCount() {
+    count--;
+    updateCount();
 }
 
-function validateForm() { //event listener
-    let name = document.getElementById('name').value;
-    if(name == '') {
-        alert('Please enter your name.');
-        return false;
-    }
-    return true;
+function resetCount() {
+    count = 0;
+    updateCount();
 }
 
-function checkAge() {
-    let age = parseInt(document.getElementById('ageInput').value);
-    if(age >= 18) {
-        document.getElementById('ageResult').innerHTML = 'You are a Major';
-    } else {
-        document.getElementById('ageResult').innerHTML = 'You are a Minor';
-    }
+function updateCount() {
+    document.getElementById("count").textContent = count;
+    sessionStorage.setItem("count", count);
 }
-
-function displayArrayItem() {
-    let items = ['Apple', 'Banana', 'Cherry', 'Date', 'Elderberry'];
-    let index = parseInt(document.getElementById('arrayIndex').value);
-    let result = items[index] || 'Invalid index';
-    document.getElementById('arrayResult').innerHTML = result;
-}
-
-
